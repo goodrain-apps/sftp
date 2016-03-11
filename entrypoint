@@ -17,16 +17,13 @@ function printReadme() {
 
 function createUser() {
     IFS=':' read -a param <<< $@
-    user="${param[0]}"
-    pass="${param[1]}"
+    user="${SFTP_USER}"
+    pass="${SFTP_PASSWORD}"
 
     if [ "${param[2]}" == "e" ]; then
         chpasswdOptions="-e"
-        uid="${param[3]}"
-        gid="${param[4]}"
-    else
-        uid="${param[2]}"
-        gid="${param[3]}"
+        uid="200"
+        gid="200"
     fi
 
     if [ -z "$user" ]; then
@@ -55,7 +52,8 @@ function createUser() {
 
     useradd $useraddOptions $user
     mkdir -p /home/$user
-    chown root:root /home/$user
+    #chown root:root /home/$user
+    chown $uid:$gid /home/$user
     chmod 755 /home/$user
 
     if [ -z "$pass" ]; then
