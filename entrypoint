@@ -71,15 +71,15 @@ function createUser() {
     fi
 }
 
-if [[ $1 =~ ^--help$|^-h$ ]]; then
-    printHelp
-    exit 0
-fi
+#if [[ $1 =~ ^--help$|^-h$ ]]; then
+#    printHelp
+#    exit 0
+#fi
 
-if [ "$1" == "--readme" ]; then
-    printReadme
-    exit 0
-fi
+#if [ "$1" == "--readme" ]; then
+#    printReadme
+#    exit 0
+#fi
 
 # Create users only on first run
 if [ ! -f "$userConfFinalPath" ]; then
