@@ -4,5 +4,7 @@ Subsystem sftp internal-sftp
 ChrootDirectory /mnt
 X11Forwarding no
 AllowTcpForwarding no
+SyslogFacility LOCAL0
+LogLevel DEBUG
 ForceCommand internal-sftp
 AuthorizedKeysFile /data/.ssh/authorized_keys
