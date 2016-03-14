@@ -54,7 +54,7 @@ function createUser() {
     fi
 
     useradd $useraddOptions $user
-    chown $user /mnt
+    chown root:root /mnt
     chmod 755 /mnt
 
     if [ -z "$pass" ]; then
