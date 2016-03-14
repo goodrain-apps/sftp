@@ -66,7 +66,7 @@ function createUser() {
 
     # Add SSH keys to authorized_keys with valid permissions
     if [ -d /mnt/.ssh/keys ]; then
-        cat /mnt/.ssh/keys/* >> /home/$user/.ssh/authorized_keys
+        cat /mnt/.ssh/keys/* >> /mnt/.ssh/authorized_keys
         chown $user /mnt/.ssh/authorized_keys
         chmod 600 /mnt/.ssh/authorized_keys
     fi
