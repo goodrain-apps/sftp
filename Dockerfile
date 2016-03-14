@@ -7,7 +7,7 @@ RUN apt-get update && \
 
 # sshd needs this directory to run
 RUN mkdir -p /var/run/sshd
-
+VOLUME /data
 COPY sshd_config /etc/ssh/sshd_config
 COPY entrypoint /
 COPY README.md /
