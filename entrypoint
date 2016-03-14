@@ -4,27 +4,12 @@ set -e
 userConfPath="/etc/sftp-users.conf"
 userConfFinalPath="/var/run/sftp-users.conf"
 
-#function printHelp() {
-#    echo "Add users as command arguments, STDIN or mounted in $userConfPath"
-#    echo "Syntax: user:pass[:e][:uid[:gid]]..."
-#    echo "Use --readme for more information and examples."
-#}
-
-#function printReadme() {
-#    cat /README.md
-#    echo "TIP: Read this in HTML format here: https://github.com/atmoz/sftp"
-#}
-
 function createUser() {
-    IFS=':' read -a param <<< $@
     user="${SFTP_USER}"
     pass="${SFTP_PASSWORD}"
-
-    if [ "${param[2]}" == "e" ]; then
-        chpasswdOptions="-e"
-        uid="200"
-        gid="200"
-    fi
+    
+    uid="200"
+    gid="200"
 
     if [ -z "$user" ]; then
         echo "FATAL: You must at least provide a username."
@@ -36,7 +21,7 @@ function createUser() {
         exit 2
     fi
 
-    useraddOptions="--no-user-group"
+    useraddOptions="--no-user-group --system"
 
     if [ -n "$uid" ]; then
         useraddOptions="$useraddOptions --non-unique --uid $uid"
@@ -71,16 +56,6 @@ function createUser() {
     fi
 }
 
-#if [[ $1 =~ ^--help$|^-h$ ]]; then
-#    printHelp
-#    exit 0
-#fi
-
-#if [ "$1" == "--readme" ]; then
-#    printReadme
-#    exit 0
-#fi
-
 # Create users only on first run
 if [ ! -f "$userConfFinalPath" ]; then
 
@@ -89,10 +64,9 @@ if [ ! -f "$userConfFinalPath" ]; then
         cat "$userConfPath" > "$userConfFinalPath"
     fi
 
-    # Append users from arguments to final config
-    for user in "$@"; do
-        echo "$user" >> "$userConfFinalPath"
-    done
+    # Append users  to final config
+    echo "$user:$pass:200:200" >> "$userConfFinalPath"
+    
 
     # Append users from STDIN to final config
     if [ ! -t 0 ]; then
