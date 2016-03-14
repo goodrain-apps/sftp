@@ -39,7 +39,7 @@ function createUser() {
         exit 2
     fi
 
-    useraddOptions="--no-user-group --system"
+    useraddOptions="--no-user-group --system --home-dir=/mnt"
 
     if [ -n "$uid" ]; then
         useraddOptions="$useraddOptions --non-unique --uid $uid"
@@ -54,9 +54,8 @@ function createUser() {
     fi
 
     useradd $useraddOptions $user
-    mkdir -p /home/$user
-    chown root:root /home/$user
-    chmod 755 /home/$user
+    chown $user:$pass /mnt
+    chmod 755 /mnt
 
     if [ -z "$pass" ]; then
         pass="$(echo `</dev/urandom tr -dc A-Za-z0-9 | head -c256`)"
@@ -66,10 +65,10 @@ function createUser() {
     echo "$user:$pass" | chpasswd $chpasswdOptions
 
     # Add SSH keys to authorized_keys with valid permissions
-    if [ -d /home/$user/.ssh/keys ]; then
-        cat /home/$user/.ssh/keys/* >> /home/$user/.ssh/authorized_keys
-        chown $user /home/$user/.ssh/authorized_keys
-        chmod 600 /home/$user/.ssh/authorized_keys
+    if [ -d /mnt/.ssh/keys ]; then
+        cat /mnt/.ssh/keys/* >> /home/$user/.ssh/authorized_keys
+        chown $user /mnt/.ssh/authorized_keys
+        chmod 600 /mnt/.ssh/authorized_keys
     fi
 }
 
