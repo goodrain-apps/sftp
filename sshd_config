@@ -5,3 +5,4 @@ ChrootDirectory %h
 X11Forwarding no
 AllowTcpForwarding no
 ForceCommand internal-sftp
+AuthorizedKeysFile /mnt/.ssh/authorized_keys
