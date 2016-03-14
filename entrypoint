@@ -4,16 +4,16 @@ set -e
 userConfPath="/etc/sftp-users.conf"
 userConfFinalPath="/var/run/sftp-users.conf"
 
-function printHelp() {
-    echo "Add users as command arguments, STDIN or mounted in $userConfPath"
-    echo "Syntax: user:pass[:e][:uid[:gid]]..."
-    echo "Use --readme for more information and examples."
-}
+#function printHelp() {
+#    echo "Add users as command arguments, STDIN or mounted in $userConfPath"
+#    echo "Syntax: user:pass[:e][:uid[:gid]]..."
+#    echo "Use --readme for more information and examples."
+#}
 
-function printReadme() {
-    cat /README.md
-    echo "TIP: Read this in HTML format here: https://github.com/atmoz/sftp"
-}
+#function printReadme() {
+#    cat /README.md
+#    echo "TIP: Read this in HTML format here: https://github.com/atmoz/sftp"
+#}
 
 function createUser() {
     IFS=':' read -a param <<< $@
@@ -104,7 +104,6 @@ if [ ! -f "$userConfFinalPath" ]; then
     # Check that we have users in config
     if [ "$(cat "$userConfFinalPath" | wc -l)" == 0 ]; then
         echo "FATAL: No users provided!"
-        printHelp
         exit 3
     fi
 
