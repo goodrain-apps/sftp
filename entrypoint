@@ -73,15 +73,6 @@ function createUser() {
     fi
 }
 
-if [[ $1 =~ ^--help$|^-h$ ]]; then
-    printHelp
-    exit 0
-fi
-
-if [ "$1" == "--readme" ]; then
-    printReadme
-    exit 0
-fi
 
 # Create users only on first run
 if [ ! -f "$userConfFinalPath" ]; then
@@ -92,9 +83,7 @@ if [ ! -f "$userConfFinalPath" ]; then
     fi
 
     # Append users from arguments to final config
-    for user in "$@"; do
-        echo "$user" >> "$userConfFinalPath"
-    done
+    echo "$SFTP_USER:$SFTP_PASSWORD:200:200" >> "$userConfFinalPath"
 
     # Append users from STDIN to final config
     if [ ! -t 0 ]; then
