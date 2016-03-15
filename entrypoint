@@ -82,7 +82,7 @@ if [ ! -f "$userConfFinalPath" ]; then
     fi
 
     # Append users from arguments to final config
-    echo "$SFTP_USER:$SFTP_PASSWORD:200:200" >> "$userConfFinalPath"
+    echo "$SFTP_USER:$SFTP_PASS:200:200" >> "$userConfFinalPath"
 
     # Append users from STDIN to final config
     if [ ! -t 0 ]; then
@@ -114,7 +114,7 @@ fi
 
 echo "==========================================================="
 echo 
-echo "Please use the User : [ $SFTP_USER ], Password: [ $SFTP_PASSWORD ] connection sftp service. "
+echo "Please use the User : [ $SFTP_USER ], Password: [ $SFTP_PASS ] connection sftp service. "
 echo 
 echo "==========================================================="
 
