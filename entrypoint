@@ -112,4 +112,8 @@ if [ ! -f "$userConfFinalPath" ]; then
     fi
 fi
 
+echo "==========================================================="
+echo "Please use [ $user ] and [ $pass ] to connect sftp service "
+echo "==========================================================="
+
 exec /usr/sbin/sshd -D
