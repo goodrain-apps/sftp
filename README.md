@@ -50,46 +50,48 @@ sftp的连接密码可以在应用首页找到
 - 连接sftp应用
 使用sftp客户端(FileZilla)连接sftp应用
 
-<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-client.png" width="50%" height="50%")/>
+<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-client.png" width="70%" height="70%")/>
 
 连接成功后会自动列出/mnt 下的应用名称
 
-<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-connected.png" width="50%" height="50%")/>
+<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-connected.png" width="70%" height="70%")/>
 
 这些目录就是挂载的应用/data 目录内容
 
+# 部署到本地
+## 拉取或构建镜像
+### 拉取镜像
 
+```
+docker pull goodrain.me/sftp:latest
+```
+### 构建镜像
 
+```
+git  clone https://github.com/goodrain-apps/sftp.git
+cd sftp
 
-Usage
------
+docker build -t sftp .
+```
 
-- Define users as command arguments, STDIN or mounted in /etc/sftp-users.conf
-  (syntax: `user:pass[:e][:uid[:gid]]...`).
-  - You must set custom UID for your users if you want them to make changes to
-    your mounted volumes with permissions matching your host filesystem.
-- Mount volumes in user's home folder.
-  - The users are chrooted to their home directory, so you must mount the
-    volumes in separate directories inside the user's home directory
-    (/home/user/**mounted-directory**).
+### 运行与连接
+- 可以在启动容器时指定参数来创建登陆用户和密码，参数格式（`user:pass[:e][:uid[:gid]]...`）
+- 可以通过将外部文件挂载到`/etc/sftp-users.conf`的形式来持久化存储用户信息
+- 用户的根目录是/mnt 不能切换到其它目录
 
-Examples
---------
-
-### Simple example
-
+#### 简单示例
 ```
 docker run \
     -v /host/share:/home/foo/share \
-    -p 2222:22 -d atmoz/sftp \
+    -p 2222:22 -d sftp \
     foo:123:1001
 ```
 
-#### Using Docker Compose:
+##### 使用 Docker Compose 启动:
 
 ```
 sftp:
-    image: atmoz/sftp
+    image: sftp
     volumes:
         - /host/share:/home/foo/share
     ports:
@@ -97,13 +99,13 @@ sftp:
     command: foo:123:1001
 ```
 
-#### Logging in
 
-The OpenSSH server runs by default on port 22, and in this example, we are
-forwarding the container's port 22 to the host's port 2222. To log in with an
-OpenSSH client, run: `sftp -P 2222 foo@<host-ip>`
+##### 登陆
 
-### Store users in config
+OpenSSH 服务默认监听22端口，在下面的示例中我们将22端口映射到宿主机的2222端口使用OpenSSH客户端连接命令：
+`sftp -P 2222 foo@<host-ip>`
+
+#### 在配置文件中存储用户
 
 ```
 docker run \
@@ -111,40 +113,45 @@ docker run \
     -v /host/share:/home/foo/share \
     -v /host/documents:/home/foo/documents \
     -v /host/http:/home/bar/http \
-    -p 2222:22 -d atmoz/sftp
+    -p 2222:22 -d sftp
 ```
 
-/host/users.conf:
+/host/users.conf 内容:
 
 ```
 foo:123:1001
 bar:abc:1002
 ```
 
-### Encrypted password
+### 设置加密的密码
 
-Add `:e` behind password to mark it as encrypted. Use single quotes.
+在启动容器时在密码的后面添加 `:e` 标记，代表我输入的密码是加密后的信息：
 
 ```
 docker run \
     -v /host/share:/home/foo/share \
-    -p 2222:22 -d atmoz/sftp \
+    -p 2222:22 -d sftp \
     'foo:$1$0G2g0GSt$ewU0t6GXG15.0hWoOX8X9.:e:1001'
 ```
 
-Tip: you can use makepasswd to generate encrypted passwords:  
+提示: 你可以使用 `makepasswd` 命令来生成加密的密码:  
 `echo -n "password" | makepasswd --crypt-md5 --clearfrom -`
 
-### Using SSH key (without password)
+### 使用 SSH key (不使用密码)
 
-Mount all public keys in the user's `.ssh/keys/` folder. All keys are automatically
-appended to `.ssh/authorized_keys`.
+将公钥文件挂载到mnt目录的`.ssh/keys/` 文件夹下，这样所有的key会自动添加到 `.ssh/authorized_keys` 文件中。
 
 ```
 docker run \
     -v /host/id_rsa.pub:/home/foo/.ssh/keys/id_rsa.pub:ro \
     -v /host/id_other.pub:/home/foo/.ssh/keys/id_other.pub:ro \
     -v /host/share:/home/foo/share \
-    -p 2222:22 -d atmoz/sftp \
+    -p 2222:22 -d sftp \
     foo::1001
 ```
+
+
+# 项目参与和讨论
+
+
+
