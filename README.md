@@ -1,7 +1,7 @@
 sftp 应用
 ==========
 
-> 基于[OpenSSH](https://en.wikipedia.org/wiki/OpenSSH) 实现的一个 简单的 SFTP ([SSH 文件传输协议 ](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)) 应用。这个应用已经适配[好雨云](https://www.goodrain.com) 支持一键部署，可以在云应用市场体验安装。同样该应用也可以在本地运行，具体运行方法参见下文详细介绍。
+> 基于[OpenSSH](https://en.wikipedia.org/wiki/OpenSSH) 实现的一个 简单的 SFTP ([SSH 文件传输协议 ](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)) 应用。该应用主要解决用户上传或下载大文件的问题，通过关联其它应用的方式将其它应用的/data目录挂载到sftp应用的/mnt 目录下，这样可以借助sftp服务作为桥梁来操作其它应用内部的文件。应用已经适配[好雨云](https://www.goodrain.com) 的一键部署功能，可以在云应用市场体验安装。同样也可以在本地运行，具体运行方法参见下文详细介绍。
 
 <a href="http://app.goodrain.com/app/36/" target="_blank" ><img src="http://www.goodrain.com/images/deploy/button_160125.png" width="147" height="32"></img></a>
 
