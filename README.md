@@ -1,7 +1,21 @@
-atmoz/sftp
+sftp 应用
 ==========
 
-Easy to use SFTP ([SSH File Transfer Protocol](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)) server with [OpenSSH](https://en.wikipedia.org/wiki/OpenSSH). This is an automated build linked with the [debian](https://hub.docker.com/_/debian/) repository.
+> Easy to use SFTP ([SSH File Transfer Protocol](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)) server with [OpenSSH](https://en.wikipedia.org/wiki/OpenSSH). This is an automated build linked with the [debian](https://hub.docker.com/_/debian/) repository.
+
+<a href="http://app.goodrain.com/app/36/" target="_blank" ><img src="http://www.goodrain.com/images/deploy/button_160125.png" width="147" height="32"></img></a>
+
+
+# 目录
+- [部署到好雨云](#部署到好雨云)
+  - [一键部署](#一键部署)
+  - [关联其他应用](#与应用关联)
+- [部署到本地](#部署到本地)
+  - [拉取或构建镜像](#拉取或构建镜像)
+      - [拉取镜像](#拉取镜像)
+      - [构建镜像](#构建镜像)
+- [项目参与和讨论](#项目参与和讨论)
+
 
 Usage
 -----
