@@ -11,7 +11,7 @@ sftp 应用
 - [部署到好雨云](#部署到好雨云)
   - [一键部署](#一键部署)
   - [关联其他应用](#与应用关联)
-  - [连接sftp服务](#连接sftp服务)
+  - [连接sftp应用](#连接sftp应用)
 - [部署到本地](#部署到本地)
   - [拉取或构建镜像](#拉取或构建镜像)
       - [拉取镜像](#拉取镜像)
@@ -34,6 +34,22 @@ sftp 应用
 <img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-mount.png" width="50%" height="50%")/>
 
 选择需要挂载的应用，点击 “挂载” 按钮，管理成功后需要**重启**sftp应用。
+
+## 连接sftp应用
+sftp 应用的**连接地址**和**端口**可以在应用的**高级页面**找到，如下图：
+
+- sftp连接地址
+<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-link.png" width="50%" height="50%")/>
+
+- sftp连接用户和密码
+sftp的连接密码可以在应用首页找到
+
+<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-info.png" width="50%" height="50%")/>
+
+- 连接sftp应用
+使用sftp客户端连接sftp应用
+
+
 
 Usage
 -----
