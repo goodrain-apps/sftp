@@ -39,6 +39,7 @@ sftp 应用
 sftp 应用的**连接地址**和**端口**可以在应用的**高级页面**找到，如下图：
 
 - sftp连接地址
+
 <img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-link.png" width="50%" height="50%")/>
 
 - sftp连接用户和密码
@@ -47,7 +48,16 @@ sftp的连接密码可以在应用首页找到
 <img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-info.png" width="50%" height="50%")/>
 
 - 连接sftp应用
-使用sftp客户端连接sftp应用
+使用sftp客户端(FileZilla)连接sftp应用
+
+<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-client.png" width="50%" height="50%")/>
+
+连接成功后会自动列出/mnt 下的应用名称
+
+<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-connected.png" width="50%" height="50%")/>
+
+这些目录就是挂载的应用/data 目录内容
+
 
 
 
