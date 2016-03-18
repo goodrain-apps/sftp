@@ -24,6 +24,17 @@ sftp 应用
 ![elk](https://github.com/goodrain-apps/sftp/blob/master/img/sftp.png)
 
 
+# 部署到好雨云
+## 一键部署
+通过点击本文最上方的 “安装到好雨云” 按钮会跳转到 好雨应用市场的应用首页中，可以通过一键部署按钮安装
+
+## 关联其它应用
+安装好sftp应用后，可以在应用的 “关联” 页面看到可以挂载的其它应用，如下图：
+
+![elk](https://github.com/goodrain-apps/sftp/blob/master/img/sftp-mount.png)
+
+选择需要挂载的应用，点击 “挂载” 按钮，管理成功后需要**重启**sftp应用。
+
 Usage
 -----
 
