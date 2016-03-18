@@ -82,8 +82,14 @@ if [ ! -f "$userConfFinalPath" ]; then
     fi
 
     # Append users from arguments to final config
-    echo "$SFTP_USER:$SFTP_PASS:200:200" >> "$userConfFinalPath"
-
+    if [ $SFTP_USER ] && [ $SFTP_PASS ];then
+        echo "$SFTP_USER:$SFTP_PASS:200:200" >> "$userConfFinalPath"
+    else
+        for user in "$@"; do
+            echo "$user" >> "$userConfFinalPath"
+        done
+    fi
+    
     # Append users from STDIN to final config
     if [ ! -t 0 ]; then
         while IFS= read -r user || [[ -n "$user" ]]; do
@@ -114,7 +120,7 @@ fi
 
 echo "==========================================================="
 echo 
-echo "Please use the User : [ $SFTP_USER ], Password: [ $SFTP_PASS ] connection sftp service. "
+echo "Please use the User : [ ${SFTP_USER:-$user ], Password: [ ${SFTP_PASS:-$pass} ] connection sftp service. "
 echo 
 echo "==========================================================="
 
