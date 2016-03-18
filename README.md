@@ -31,7 +31,7 @@ sftp 应用
 ## 关联其它应用
 安装好sftp应用后，可以在应用的 “关联” 页面看到可以挂载的其它应用，如下图：
 
-![elk](https://github.com/goodrain-apps/sftp/blob/master/img/sftp-mount.png)
+<img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-mount.png" width="50%" height="50%")/>
 
 选择需要挂载的应用，点击 “挂载” 按钮，管理成功后需要**重启**sftp应用。
 
