@@ -20,6 +20,10 @@ sftp 应用
 - [项目参与和讨论](#项目参与和讨论)
 
 
+# 应用工作原理
+![elk](https://github.com/goodrain-apps/sftp/blob/master/img/sftp.png)
+
+
 Usage
 -----
 
