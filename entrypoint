@@ -118,4 +118,10 @@ if [ ! -f "$userConfFinalPath" ]; then
     fi
 fi
 
+echo "==========================================================="
+echo 
+echo "Please use the User : [ $SFTP_USER ], Password: [ $SFTP_PASS ] connection sftp service. "
+echo 
+echo "==========================================================="
+
 exec /usr/sbin/sshd -D
