@@ -33,7 +33,7 @@ sftp 应用
 
 <img src="https://github.com/goodrain-apps/sftp/blob/master/img/sftp-mount.png" width="50%" height="50%")/>
 
-选择需要挂载的应用，点击 “挂载” 按钮，管理成功后需要**重启**sftp应用。
+选择需要挂载的应用，点击 “挂载” 按钮，关联成功后需要**重启**sftp应用。
 
 ## 连接sftp应用
 sftp 应用的**连接地址**和**端口**可以在应用的**高级页面**找到，如下图：
