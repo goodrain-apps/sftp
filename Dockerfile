@@ -1,10 +1,16 @@
 FROM debian:jessie
-MAINTAINER Adrian Dvergsdal [atmoz.net]
+MAINTAINER zhouyq@goodrain.com
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-server && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install git openssh-server && \
     rm -rf /var/lib/apt/lists/*
+    
 
+RUN  mkdir -p /opt/ && \
+     cd /opt && \
+     git clone https://github.com/kalcaddle/KODExplorer.git && \
+     mv KODExplorer VolumeExplorer
+     
 # sshd needs this directory to run
 RUN mkdir -p /var/run/sshd
 VOLUME /data
