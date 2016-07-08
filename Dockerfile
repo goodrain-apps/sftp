@@ -1,6 +1,8 @@
 FROM debian:jessie
 MAINTAINER zhouyq@goodrain.com
 
+RUN groupadd -g 200 www-data && useradd -u 200 -g 200 www-data
+
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install git openssh-server php5-fpm nginx && \
     rm -rf /var/lib/apt/lists/*
