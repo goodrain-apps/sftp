@@ -4,8 +4,6 @@ set -e
 userConfPath="/etc/sftp-users.conf"
 userConfFinalPath="/var/run/sftp-users.conf"
 
-# modify php-fpm conf
-sed -i -r 's#(error_log) =.*#\1 = /dev/stdout#' /etc/php5/fpm/php-fpm.conf
 
 function printHelp() {
     echo "Add users as command arguments, STDIN or mounted in $userConfPath"
@@ -127,11 +125,6 @@ echo "Please use the User : [ $SFTP_USER ], Password: [ $SFTP_PASS ] connection 
 echo 
 echo "==========================================================="
 
-# run php5-fpm
-/usr/sbin/php5-fpm --daemonize
 
 # run sshd
 exec /usr/sbin/sshd
-
-# run nginx
-/usr/sbin/nginx
