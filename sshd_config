@@ -8,3 +8,4 @@ SyslogFacility AUTH
 LogLevel DEBUG
 ForceCommand internal-sftp
 AuthorizedKeysFile /data/.ssh/authorized_keys
+MaxStartups 200
