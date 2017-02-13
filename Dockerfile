@@ -16,3 +16,4 @@ COPY entrypoint /
 EXPOSE 22
 
 ENTRYPOINT ["/entrypoint"]
+CMD ["/usr/bin/sshd","-D"]
