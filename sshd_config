@@ -5,6 +5,6 @@ ChrootDirectory /data
 X11Forwarding no
 AllowTcpForwarding no
 SyslogFacility AUTH
-LogLevel DEBUG
 ForceCommand internal-sftp
 AuthorizedKeysFile /data/.ssh/authorized_keys
+LogLevel VERBOSE
